@@ -1,23 +1,15 @@
-# functions.py
+import requests
 
-def get_current_weather(location, unit='celsius'):
-    """
-    Get the current weather for a given location.
+def get_current_weather(latitude, longitude):
+    print(f"Fetching current weather for coordinates: {latitude}, {longitude}")
+    response = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m")
+    data = response.json()
+    return data['current']['temperature_2m']
 
-    Args:
-        location (str): The city and country code, e.g., 'New York, US'.
-        unit (str): The unit for temperature, 'celsius' or 'fahrenheit'.
-
-    Returns:
-        dict: A dictionary containing weather information.
-    """
-    # For demonstration purposes, return dummy data.
-    # In a real application, you would call a weather API like OpenWeatherMap.
-
-    weather_info = {
-        'location': location,
-        'temperature': '23',
-        'unit': unit,
-        'description': 'Sunny',
+def get_my_location():
+    print("Fetching my current location.")
+    dummy_location = {
+        'latitude': -19.934016866168683,
+        'longitude': -43.93634461364911
     }
-    return weather_info
+    return dummy_location

@@ -1,10 +1,8 @@
-# main.py
-
 from assistant import process_user_message
 
 def main():
     print("Welcome to the Weather Assistant!")
-    print("You can ask me about the current weather in any city.")
+    print("You can ask me about the current weather.")
     print("Type 'exit' or 'quit' to end the conversation.\n")
     messages = [
         {"role": "system", "content": "You are a helpful assistant that provides weather information."},
